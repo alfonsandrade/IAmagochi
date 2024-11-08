@@ -7,30 +7,57 @@ document.addEventListener("DOMContentLoaded", () => {
         calendar.style.display = calendar.style.display === "none" ? "block" : "none";
     });
 
-    // Predefined occupied hours
-    const occupiedHours = {
-        Monday: [9, 10, 11, 12, 14, 15, 16, 17],
-        Tuesday: [13, 14, 15, 16, 17],
-        Wednesday: [11, 12, 13],
-        Thursday: [10, 11, 15],
-        Friday: [9, 17],
-        Saturday: [],
-        Sunday: []
-    };
+    // CALENDAR CONFIG QUESTIONS
+    const cfgBtn = document.getElementById('calendar-config-button');
+    const popup = document.getElementById('popup');
+    const closeButton = document.querySelector('.close-popup');
+    const popupOptions = document.querySelectorAll('.popup-option');
 
-    // Populate hours
-    const days = document.querySelectorAll(".day");
-    days.forEach(day => {
-        const dayName = day.getAttribute("data-day");
-        const hoursContainer = day.querySelector(".hours");
+    cfgBtn.addEventListener('click', function() {
+        popup.style.display = 'block';
+    });
 
-        for (let i = 0; i < 24; i++) {
-            const hourBlock = document.createElement("div");
-            hourBlock.classList.add("hour-block");
-            if (occupiedHours[dayName].includes(i)) {
-                hourBlock.classList.add("occupied");
-            }
-            hoursContainer.appendChild(hourBlock);
+    closeButton.addEventListener('click', function() {
+        popup.style.display = 'none';
+    });
+
+    window.addEventListener('click', function(event) {
+        if (event.target == popup) {
+            popup.style.display = 'none';
         }
     });
+
+    let answer = '';
+    popupOptions.forEach(option => {
+        option.addEventListener('click', function() {
+            answer = this.getAttribute('data-answer');
+            console.log('Answer:', answer);
+            popup.style.display = 'none';
+            fillCalendar(answer);
+        });
+    });
+
+    function fillCalendar(answer) {
+        const occupiedHours = {
+            'Morning': [8, 9, 10, 11],
+            'Afternoon': [12, 13, 14, 15],
+            'Morning-Afternoon': [7, 8, 9, 10, 12, 13, 14, 15]
+        };
+
+        const days = document.querySelectorAll('.day');
+        days.forEach(day => {
+            const hoursContainer = day.querySelector('.hours');
+            hoursContainer.innerHTML = ''; // Clear previous hours
+
+            for (let hour = 0; hour < 24; hour++) {
+                const hourBlock = document.createElement('div');
+                hourBlock.classList.add('hour-block');
+                hourBlock.textContent = `${hour}:00`;
+                if (occupiedHours[answer].includes(hour)) {
+                    hourBlock.classList.add('occupied');
+                }
+                hoursContainer.appendChild(hourBlock);
+            }
+        });
+    }
 });
