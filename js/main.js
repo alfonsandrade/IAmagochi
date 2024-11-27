@@ -2,6 +2,8 @@ document.addEventListener("DOMContentLoaded", () => {
    const calendar = document.getElementById("calendar");
    const toggleButton = document.getElementById("calendar-toggle-button");
 
+   calendar.style.display = "none"; // Hide the calendar by default
+
    // Toggle the visibility of the calendar
    toggleButton.addEventListener("click", () => {
        calendar.style.display = calendar.style.display === "none" ? "block" : "none";

@@ -15,45 +15,45 @@
           <line x1="8" y1="2" x2="8" y2="6"></line>
           <line x1="3" y1="10" x2="21" y2="10"></line>
       </svg>
-  </button>
+   </button>
 
-   <div class="calendar" id="calendar">
+   <section class="calendar" id="calendar">
       <h1>Busy Calendar</h1>
-      <div class="days">
-         <div class="day" data-day="Monday">
+      <ul class="days">
+         <li class="day" data-day="Monday">
                <h2>Monday</h2>
-               <div class="hours"></div>
-         </div>
-         <div class="day" data-day="Tuesday">
+               <ul class="hours"></ul>
+         </li>
+         <li class="day" data-day="Tuesday">
                <h2>Tuesday</h2>
-               <div class="hours"></div>
-         </div>
-         <div class="day" data-day="Wednesday">
+               <ul class="hours"></ul>
+         </li>
+         <li class="day" data-day="Wednesday">
                <h2>Wednesday</h2>
-               <div class="hours"></div>
-         </div>
-         <div class="day" data-day="Thursday">
+               <ul class="hours"></ul>
+         </li>
+         <li class="day" data-day="Thursday">
                <h2>Thursday</h2>
-               <div class="hours"></div>
-         </div>
-         <div class="day" data-day="Friday">
+               <ul class="hours"></ul>
+         </li>
+         <li class="day" data-day="Friday">
                <h2>Friday</h2>
-               <div class="hours"></div>
-         </div>
-         <div class="day" data-day="Saturday">
+               <ul class="hours"></ul>
+         </li>
+         <li class="day" data-day="Saturday">
                <h2>Saturday</h2>
-               <div class="hours"></div>
-         </div>
-         <div class="day" data-day="Sunday">
+               <ul class="hours"></ul>
+         </li>
+         <li class="day" data-day="Sunday">
                <h2>Sunday</h2>
-               <div class="hours"></div>
-         </div>
-      </div>
+               <ul class="hours"></ul>
+         </li>
+      </ul>
 
       <button id="calendar-config-button">Config</button>
-   </div>
+   </section>
 
-   <div id="studyTimePopup" class="popup">
+   <dialog id="studyTimePopup" class="popup">
       <div class="popup-content">
          <span class="close-popup">&times;</span>
          <p>When do you study?</p>
@@ -61,9 +61,9 @@
          <button class="popup-option" data-answer="Afternoon">Afternoon</button>
          <button class="popup-option" data-answer="Morning-Afternoon">Morning and afternoon</button>
       </div>
-   </div>
+   </dialog>
 
-   <div id="sleepTimePopup" class="popup">
+   <dialog id="sleepTimePopup" class="popup">
       <div class="popup-content">
          <span class="close-popup">&times;</span>
          <p>When do you go to sleep?</p>
@@ -72,7 +72,7 @@
          <button class="popup-option" data-answer="21h">21h</button>
          <button class="popup-option" data-answer="22h">22h</button>
       </div>
-   </div>
+   </dialog>
 
    <script src="js/main.js"></script>
 </body>
