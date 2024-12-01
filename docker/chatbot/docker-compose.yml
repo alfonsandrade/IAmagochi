@@ -1,0 +1,31 @@
+services:
+  fastapi:
+    build:
+      context: ../fastapi  # Path to the FastAPI Dockerfile
+      dockerfile: Dockerfile
+    ports:
+      - 5005:5005
+    volumes:
+      - ../../:/home  # Mount the project directory for development
+    networks:
+      - chatbot-net
+
+  ollama:
+    build:
+      context: ../ollama  # Path to the Ollama Dockerfile
+      dockerfile: Dockerfile
+    ports:
+      - 11434:11434
+    volumes:
+      - ollama-vol:/ollama  # Volume to persist Ollama models
+    networks:
+      - chatbot-net
+    entrypoint: ["/usr/bin/bash", "pull-llama3.sh"]
+
+networks:
+  chatbot-net:
+    driver: bridge
+
+volumes:
+  ollama-vol:
+    driver: local

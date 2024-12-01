@@ -91,4 +91,51 @@ document.addEventListener("DOMContentLoaded", () => {
          }
       });
    }
+
+   const chatDisplay = document.getElementById("chat-display");
+   const chatInput = document.getElementById("chat-input");
+   const chatSendButton = document.getElementById("chat-send-button");
+
+   // Function to append a message to the chat display
+   function appendMessage(sender, message) {
+      const messageElement = document.createElement("p");
+      messageElement.textContent = `${sender}: ${message}`;
+      chatDisplay.appendChild(messageElement);
+      chatDisplay.scrollTop = chatDisplay.scrollHeight; // Scroll to the latest message
+   }
+
+   // Handle sending a message
+   chatSendButton.addEventListener("click", async () => {
+      const userMessage = chatInput.value.trim();
+      if (!userMessage) return;
+  
+      // Display user message
+      appendMessage("You", userMessage);
+      chatInput.value = ""; // Clear input box
+  
+      try {
+         const response = await fetch("http://10.147.17.216:5005/ask?prompt=" + encodeURIComponent(userMessage));
+          if (!response.ok) {
+              throw new Error(`Server responded with status ${response.status}`);
+          }
+  
+          const data = await response.json();
+          console.log("Chatbot Response Data:", data); // Debug response structure
+  
+          if (data.response) {
+              appendMessage("Buddy", data.response); // Primary response
+          } else if (data.message && data.message.content) {
+              appendMessage("Buddy", data.message.content); // Fallback response
+          } else if (data.error) {
+              appendMessage("Buddy", `Error: ${data.error}`);
+          } else {
+              appendMessage("Buddy", "Sorry, I didn't understand that.");
+          }
+      } catch (error) {
+          console.error("Error communicating with chatbot:", error);
+          appendMessage("Buddy", `Sorry, I couldn't connect to the chatbot: ${error.message}`);
+      }
+  });
+  
+
 });
