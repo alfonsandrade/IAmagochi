@@ -1,15 +1,55 @@
 document.addEventListener("DOMContentLoaded", () => {
+   const chatDisplay = document.getElementById("chat-display");
+   const chatInput = document.getElementById("chat-input");
+   const chatSendButton = document.getElementById("chat-send-button");
+
+   function appendMessage(sender, message) {
+      const messageElement = document.createElement("p");
+      messageElement.textContent = `${sender}: ${message}`;
+      chatDisplay.appendChild(messageElement);
+      chatDisplay.scrollTop = chatDisplay.scrollHeight; // Scroll to the latest message
+   }
+
+   chatSendButton.addEventListener("click", async () => {
+      const userMessage = chatInput.value.trim();
+      if (!userMessage) return;
+
+      appendMessage("You", userMessage);
+      chatInput.value = "";
+
+      try {
+         const response = await fetch("http://10.147.17.216:5005/ask?prompt=" + encodeURIComponent(userMessage));
+         const data = await response.json();
+         appendMessage("Buddy", data.response || "Sorry, I didn't understand that.");
+      } catch (error) {
+         appendMessage("Buddy", `Error: ${error.message}`);
+      }
+   });
+
+
+   // CALENDAR PART
+
+   const calendarToggleBtn = document.getElementById('calendar-toggle-button');
    const calendar = document.getElementById("calendar");
-   const toggleButton = document.getElementById("calendar-toggle-button");
+   const calendarOverlay = document.getElementById("calendar-overlay");
 
    calendar.style.display = "none"; // Hide the calendar by default
 
-   // Toggle the visibility of the calendar
-   toggleButton.addEventListener("click", () => {
-       calendar.style.display = calendar.style.display === "none" ? "block" : "none";
+   calendarToggleBtn.addEventListener('click', function() {
+      if (calendar.style.display === 'none') {
+         calendar.style.display = 'block';
+         calendarOverlay.style.display = 'block';
+      } else {
+         calendar.style.display = 'none';
+         calendarOverlay.style.display = 'none';
+      }
    });
 
-   // CALENDAR CONFIG QUESTIONS
+   calendarOverlay.addEventListener('click', function() {
+      calendar.style.display = 'none';
+      calendarOverlay.style.display = 'none';
+   });
+
    const cfgBtn = document.getElementById('calendar-config-button');
    const studyTimePopup = document.getElementById('studyTimePopup');
    const studyTimeCloseBtn = studyTimePopup.querySelector('.close-popup');
@@ -21,10 +61,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
    cfgBtn.addEventListener('click', function() {
       studyTimePopup.style.display = 'block';
+      calendar.style.display = 'none';
+      calendarOverlay.style.display = 'none';
    });
 
    studyTimeCloseBtn.addEventListener('click', function() {
       studyTimePopup.style.display = 'none';
+      calendar.style.display = 'block';
+      calendarOverlay.style.display = 'block';
    });
 
    window.addEventListener('click', function(event) {
@@ -40,7 +84,6 @@ document.addEventListener("DOMContentLoaded", () => {
    studyTimePopupOpts.forEach(option => {
       option.addEventListener('click', function() {
          answer = this.getAttribute('data-answer');
-         console.log('Answer:', answer);
          studyTimePopup.style.display = 'none';
          sleepTimePopup.style.display = 'block';
       });
@@ -48,12 +91,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
    sleepTimeCloseBtn.addEventListener('click', function() {
       sleepTimePopup.style.display = 'none';
+      calendar.style.display = 'block';
+      calendarOverlay.style.display = 'block';
    });
 
    sleepTimePopupOpts.forEach(option => {
       option.addEventListener('click', function() {
          answer = answer + '_' + this.getAttribute('data-answer');
-         console.log('Answer:', answer);
          sleepTimePopup.style.display = 'none';
          fillCalendar(answer);
       });
@@ -61,8 +105,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
    function fillCalendar(answer) {
       const [studyTimeAnswer, sleepTimeAnswer] = answer.split('_');
-      console.log('Study Time Answer:', studyTimeAnswer);
-      console.log('Sleep Time Answer:', sleepTimeAnswer);
 
       const occupiedHours = {
          'Morning': [8, 9, 10, 11],
@@ -90,52 +132,8 @@ document.addEventListener("DOMContentLoaded", () => {
             hoursContainer.appendChild(hourBlock);
          }
       });
+
+      calendar.style.display = 'block';
+      calendarOverlay.style.display = 'block';
    }
-
-   const chatDisplay = document.getElementById("chat-display");
-   const chatInput = document.getElementById("chat-input");
-   const chatSendButton = document.getElementById("chat-send-button");
-
-   // Function to append a message to the chat display
-   function appendMessage(sender, message) {
-      const messageElement = document.createElement("p");
-      messageElement.textContent = `${sender}: ${message}`;
-      chatDisplay.appendChild(messageElement);
-      chatDisplay.scrollTop = chatDisplay.scrollHeight; // Scroll to the latest message
-   }
-
-   // Handle sending a message
-   chatSendButton.addEventListener("click", async () => {
-      const userMessage = chatInput.value.trim();
-      if (!userMessage) return;
-  
-      // Display user message
-      appendMessage("You", userMessage);
-      chatInput.value = ""; // Clear input box
-  
-      try {
-         const response = await fetch("http://10.147.17.216:5005/ask?prompt=" + encodeURIComponent(userMessage));
-          if (!response.ok) {
-              throw new Error(`Server responded with status ${response.status}`);
-          }
-  
-          const data = await response.json();
-          console.log("Chatbot Response Data:", data); // Debug response structure
-  
-          if (data.response) {
-              appendMessage("Buddy", data.response); // Primary response
-          } else if (data.message && data.message.content) {
-              appendMessage("Buddy", data.message.content); // Fallback response
-          } else if (data.error) {
-              appendMessage("Buddy", `Error: ${data.error}`);
-          } else {
-              appendMessage("Buddy", "Sorry, I didn't understand that.");
-          }
-      } catch (error) {
-          console.error("Error communicating with chatbot:", error);
-          appendMessage("Buddy", `Sorry, I couldn't connect to the chatbot: ${error.message}`);
-      }
-  });
-  
-
 });
