@@ -4,9 +4,83 @@
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Chat with Buddy</title>
-   <link rel="stylesheet" href="css/chat.css">
+   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+   <link rel="stylesheet" href="css/index.css">
+   <script src="js/index.js"></script>
 </head>
 <body>
+   <!-- Background overlay -->
+   <div id="calendar-overlay"></div>
+
+   <!-- CALENDAR PART -->
+   <button id="calendar-toggle-button">
+      <!-- Calendar Icon SVG -->
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+          <line x1="16" y1="2" x2="16" y2="6"></line>
+          <line x1="8" y1="2" x2="8" y2="6"></line>
+          <line x1="3" y1="10" x2="21" y2="10"></line>
+      </svg>
+   </button>
+
+   <section class="calendar" id="calendar">
+      <h1>Busy Calendar</h1>
+      <ul class="days">
+         <li class="day" data-day="Monday">
+               <h2>Monday</h2>
+               <ul class="hours"></ul>
+         </li>
+         <li class="day" data-day="Tuesday">
+               <h2>Tuesday</h2>
+               <ul class="hours"></ul>
+         </li>
+         <li class="day" data-day="Wednesday">
+               <h2>Wednesday</h2>
+               <ul class="hours"></ul>
+         </li>
+         <li class="day" data-day="Thursday">
+               <h2>Thursday</h2>
+               <ul class="hours"></ul>
+         </li>
+         <li class="day" data-day="Friday">
+               <h2>Friday</h2>
+               <ul class="hours"></ul>
+         </li>
+         <li class="day" data-day="Saturday">
+               <h2>Saturday</h2>
+               <ul class="hours"></ul>
+         </li>
+         <li class="day" data-day="Sunday">
+               <h2>Sunday</h2>
+               <ul class="hours"></ul>
+         </li>
+      </ul>
+   
+      <button id="calendar-config-button">Config</button>
+   </section>
+   
+   <dialog id="studyTimePopup" class="popup">
+      <div class="popup-content">
+         <span class="close-popup">&times;</span>
+         <p>When do you study?</p>
+         <button class="popup-option" data-answer="Morning">Morning</button>
+         <button class="popup-option" data-answer="Afternoon">Afternoon</button>
+         <button class="popup-option" data-answer="Morning-Afternoon">Morning and afternoon</button>
+      </div>
+   </dialog>
+   
+   <dialog id="sleepTimePopup" class="popup">
+      <div class="popup-content">
+         <span class="close-popup">&times;</span>
+         <p>When do you go to sleep?</p>
+         <button class="popup-option" data-answer="19h">19h</button>
+         <button class="popup-option" data-answer="20h">20h</button>
+         <button class="popup-option" data-answer="21h">21h</button>
+         <button class="popup-option" data-answer="22h">22h</button>
+      </div>
+   </dialog>
+
+   <!-- CHAT PART -->
    <section id="chat-section">
       <h2>Chat with Your Buddy</h2>
       <div id="chat-display">
@@ -17,7 +91,5 @@
          <button id="chat-send-button">Send</button>
       </div>
    </section>
-
-   <script src="js/chat.js"></script>
 </body>
 </html>
