@@ -5,88 +5,58 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Create pet Page</title>
    <link rel="stylesheet" href="css/createPet.css">
-   <link rel="preconnect" href="https://fonts.googleapis.com">
-   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+   <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
+   <header>
+      <h1>Welcome to IAmagochi</h1>
+   </header>
+
    <main>
-      <header>
-         <h1>Welcome to IAmagochi</h1>
-      </header>
+      <section>
+         <h2>Create Your Pet</h2>
 
-      <h2 class="title">Character<br>Creation</h2>
+         <form id="petForm">
+            <label for="petName">Pet Name:</label>
+            <input id="petName" type="text" required />
 
-      <button class="cfgBtn"></button>
+            <label for="nickname">Your Nickname:</label>
+            <input id="nickname" type="text" required />
 
-      <div class="petName">
-         <h2>Pet Name</h2>
-         <input type="text">
-      </div>
+            <label>Pronouns:</label>
+            <div class="radio-group">
+               <label><input type="radio" name="pronouns" value="he/him" required> He/Him</label>
+               <label><input type="radio" name="pronouns" value="she/her"> She/Her</label>
+               <label><input type="radio" name="pronouns" value="they/them"> They/Them</label>
+            </div>
 
-      <div class="yNickName">
-         <h2>Your Nickname</h2>
-         <input type="text">
-      </div>
+            <label>Species:</label>
+            <select id="species" name="species" required>
+               <option value="" disabled selected>Select a species</option>
+               <option value="cat">Cat</option>
+               <option value="unicorn">Unicorn</option>
+               <option value="dragon">Dragon</option>
+            </select>
 
-      <div class="petImg">
-         <img id="tree" src="images/arvorePixelada.png" alt="Tree background">
-         <img id="pet" src="images/Gato.png" alt="Pet image">
-      </div>
-      
-      <div class="species">
-         <div class="selectionHeader"><h2>Species</h2></div>
-         <div class="selectionOptions">
-               <div class="option" data-value="cat">
-                  <img src="https://via.placeholder.com/20/FFD700/000000?text=%F0%9F%90%88" alt="cat emoji">
-                  Cat
-               </div>
-               <div class="option" data-value="unicorn">
-                  <img src="https://via.placeholder.com/20/FFC0CB/000000?text=%F0%9F%A6%84" alt="unicorn emoji">
-                  Unicorn
-               </div>
-               <div class="option" data-value="dragon">
-                  <img src="https://via.placeholder.com/20/90EE90/000000?text=%F0%9F%90%89" alt="dragon emoji">
-                  Dragon
-               </div>
-         </div>
-      </div>
+            <h3>Personality</h3>
+            <label>Rage:</label>
+            <p id="rage">/10</p>
 
-      <div class="pronoun">
-         <h2>What are your pronouns?</h2>
-         <div class="radio-group">
-            <label><input type="radio" name="pronouns" value="he/him" required> He/Him</label>
-            <label><input type="radio" name="pronouns" value="she/her"> She/Her</label>
-            <label><input type="radio" name="pronouns" value="they/them"> They/Them</label>
-         </div>
-      </div>
+            <label>Happiness:</label>
+            <p id="happiness">/10</p>
 
-      <section class="personality">
-         <h2>Personality</h2>
-         <div class="meter-container">
-            <label for="anger">Anger:</label>
-            <meter id="anger" min="0" max="10" value="5" high="0"></meter>
-         </div>
-         <div class="meter-container">
-            <label for="happiness">Happiness:</label>
-            <meter id="happiness" min="0" max="10" value="8" high="0"></meter>
-         </div>
-         <div class="meter-container">
-            <label for="sadness">Sadness:</label>
-            <meter id="sadness" min="0" max="10" value="5" high="0"></meter>
-         </div>
+            <label>Sadness:</label>
+            <p id="sadness">/10</p>
+
+            <button type="submit">Create</button>
+         </form>
+
       </section>
-
-      <div class="description">
-         <h2>Pet Description</h2>
-         <p>I'm blue da ba dee da ba daa</p>
-      </div>
-
-      <button class="createBtn"><a href="index.html">Create</a></button>
-      
-      <footer>
-         <p>&copy; 2024 IAmagochi. All Rights Reserved.</p>
-      </footer>
    </main>
+   <script type="module" src="js/createPet.js"></script>
+
+   <footer>
+      <p>&copy; 2024 IAmagochi. All Rights Reserved.</p>
+   </footer>
 </body>
 </html>
