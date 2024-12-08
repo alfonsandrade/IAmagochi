@@ -1,0 +1,225 @@
+/* Chat Section Styles */
+body {
+   font-family: Arial, sans-serif;
+   margin: 0;
+   padding: 0;
+   background-color: #f7f7f7;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 100vh;
+}
+
+/* Calendar Toggle Button */
+#calendar-toggle-button {
+   position: absolute;
+   top: 10px;
+   right: 10px;
+   background-color: #4caf50;
+   color: white;
+   border: none;
+   border-radius: 50%;
+   width: 40px;
+   height: 40px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   cursor: pointer;
+   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#calendar-toggle-button:hover {
+   background-color: #45a049;
+}
+
+/* Calendar Section */
+#calendar {
+   width: 90%;
+   max-width: 1000px;
+   padding: 20px;
+   text-align: center;
+   background-color: #fff;
+   border: 1px solid #ccc;
+   border-radius: 8px;
+   display: none; /* Hidden by default */
+   position: fixed; /* Make it a fixed position popup */
+   top: 50%; /* Center vertically */
+   left: 50%; /* Center horizontally */
+   transform: translate(-50%, -50%); /* Center the element */
+   z-index: 1000; /* Ensure it appears above other elements */
+   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a shadow for better visibility */
+}
+
+/* Background overlay */
+#calendar-overlay {
+   display: none; /* Hidden by default */
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+   z-index: 999; /* Ensure it appears below the calendar but above other elements */
+}
+
+.days {
+   list-style-type: none;
+   padding: 0;
+   margin: 0;
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: space-between;
+}
+
+.day {
+   flex: 1;
+   margin: 5px;
+   padding: 10px;
+   background-color: #fff;
+   border: 1px solid #ccc;
+   border-radius: 8px;
+}
+
+.day h2 {
+   font-size: 1.2em;
+   color: #333;
+}
+
+.hours {
+   list-style-type: none;
+   padding: 0;
+   margin: 0;
+   display: flex;
+   flex-direction: column;
+   margin-top: 10px;
+}
+
+.hour-block {
+   height: 1.2em;
+   margin: 2px 0;
+   background-color: #e0e0e0;
+   border-radius: 4px;
+   position: relative;
+   text-align: center;
+}
+
+.hour-block.occupied {
+   background-color: #c03f3f;
+}
+
+/* Config Button */
+#calendar-config-button {
+   margin-top: 20px;
+   padding: 10px 20px;
+   background-color: #4caf50;
+   color: white;
+   border: none;
+   border-radius: 4px;
+   cursor: pointer;
+}
+
+#calendar-config-button:hover {
+   background-color: #45a049;
+}
+
+/* Popup Styles */
+.popup {
+   display: none;
+   position: fixed;
+   left: 0;
+   top: 0;
+   width: 100%;
+   height: 100%;
+   overflow: auto;
+   background-color: rgba(0, 0, 0, 0.4);
+}
+
+.popup-content {
+   background-color: #fff;
+   margin: 15% auto;
+   padding: 20px;
+   border: 1px solid #888;
+   width: 80%;
+   max-width: 400px;
+   border-radius: 8px;
+   text-align: center;
+}
+
+.close-popup {
+   color: #aaa;
+   float: right;
+   font-size: 28px;
+   font-weight: bold;
+}
+
+.close-popup:hover,
+.close-popup:focus {
+   color: black;
+   text-decoration: none;
+   cursor: pointer;
+}
+
+.popup-option {
+   margin: 10px;
+   padding: 10px 20px;
+   background-color: #4caf50;
+   color: white;
+   border: none;
+   border-radius: 4px;
+   cursor: pointer;
+}
+
+.popup-option:hover {
+   background-color: #45a049;
+}
+
+/* CHAT BOX */
+
+#chat-section {
+   width: 80%;
+   max-width: 600px;
+   margin: 20px auto;
+   padding: 20px;
+   background-color: #f9f9f9;
+   border-radius: 8px;
+   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#chat-display {
+   height: 300px;
+   overflow-y: auto;
+   margin-bottom: 10px;
+   padding: 10px;
+   background-color: #fff;
+   border: 1px solid #ccc;
+   border-radius: 4px;
+}
+
+#chat-display p {
+   margin: 5px 0;
+}
+
+#chat-input-container {
+   display: flex;
+   gap: 10px;
+}
+
+#chat-input {
+   flex: 1;
+   padding: 10px;
+   border: 1px solid #ccc;
+   border-radius: 4px;
+}
+
+#chat-send-button {
+   padding: 10px 20px;
+   background-color: #4caf50;
+   color: white;
+   border: none;
+   border-radius: 4px;
+   cursor: pointer;
+}
+
+#chat-send-button:hover {
+   background-color: #45a049;
+}
