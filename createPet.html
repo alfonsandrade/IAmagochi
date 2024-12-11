@@ -5,23 +5,55 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Create pet Page</title>
    <link rel="stylesheet" href="css/createPet.css">
+   <link rel="stylesheet" href="css/global.css">
 </head>
 <body>
    <header>
       <h1>Welcome to IAmagochi</h1>
-      <nav>
-         <ul>
-            <li><a href="index.html">Create</a></li>
-         </ul>
-      </nav>
    </header>
 
    <main>
       <section>
-         <h2>Choose Your Activity</h2>
-         <p>Chat with Buddy page using the link above.</p>
+         <h2>Create Your Pet</h2>
+
+         <form id="petForm">
+            <label for="petName">Pet Name:</label>
+            <input id="petName" type="text" required />
+
+            <label for="nickname">Your Nickname:</label>
+            <input id="nickname" type="text" required />
+
+            <label>Pronouns:</label>
+            <div class="radio-group">
+               <label><input type="radio" name="pronouns" value="he/him" required> He/Him</label>
+               <label><input type="radio" name="pronouns" value="she/her"> She/Her</label>
+               <label><input type="radio" name="pronouns" value="they/them"> They/Them</label>
+            </div>
+
+            <label>Species:</label>
+            <select id="species" name="species" required>
+               <option value="" disabled selected>Select a species</option>
+               <option value="cat">Cat</option>
+               <option value="unicorn">Unicorn</option>
+               <option value="dragon">Dragon</option>
+            </select>
+
+            <h3>Personality</h3>
+            <label>Rage:</label>
+            <p id="rage">/10</p>
+
+            <label>Happiness:</label>
+            <p id="happiness">/10</p>
+
+            <label>Sadness:</label>
+            <p id="sadness">/10</p>
+
+            <button type="submit">Create</button>
+         </form>
+
       </section>
    </main>
+   <script type="module" src="js/createPet.js"></script>
 
    <footer>
       <p>&copy; 2024 IAmagochi. All Rights Reserved.</p>
