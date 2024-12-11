@@ -1,14 +1,15 @@
 import requests
 from fastapi import FastAPI, Response
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
 
-from fastapi.middleware.cors import CORSMiddleware
 
 # Add this middleware to allow your frontend to connect
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://10.147.17.216"],  # Update with your actual frontend URL
+    #allow_origins=["http://10.147.17.216"]
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],  # Allow all HTTP methods
     allow_headers=["*"],  # Allow all headers
@@ -20,6 +21,7 @@ def home():
 
 @app.get('/ask')
 def ask(prompt: str):
+    print("teste")
     try:
         res = requests.post(
             'http://ollama:11434/api/generate',
