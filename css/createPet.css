@@ -6,7 +6,6 @@
 
 /* General Styles */
 body {
-   font-family: Arial, sans-serif;
    margin: 0;
    padding: 0;
    border-width: 0;
@@ -43,17 +42,29 @@ nav ul li a:hover {
 main {
    flex: 1;
    display: grid;
+   grid-template-columns: 1fr;
+   grid-template-rows: 1fr 18fr 1fr;
+   grid-template-areas:
+      "header"
+      "form"
+      "footer";
+   gap: 5px;
+   text-align: center;
+   max-height: 100vh;
+}
+
+form {
+   grid-area: form;
+   display: grid;
    grid-template-columns: 1fr 1fr 1fr;
    grid-template-rows: auto;
    grid-template-areas:
-      "header      header      header"
       ".           title       cfgBtn"
       "petName     yNickName   petImg"
       "species     pronoun     petImg"
-      "personality description createBtn"
-      "footer      footer      footer";
-   gap: 5px;
-   text-align: center;
+      "personality description createBtn";
+   gap: 10px;
+   padding: 10px;
 }
 
 /* Header */
@@ -76,7 +87,7 @@ header h1 {
    background-color: #ffa24c;
    border-radius: 15px;
    width: 100%;
-   height: 60%;
+   height: auto;
    display: flex;
    justify-content: center;
    align-items: center;
@@ -104,7 +115,6 @@ header h1 {
    font-size: 35px;
    color: white;
    position: relative;
-   top: -6%;
 }
 .cfgBtn:hover {
    background-color: #e69143;
@@ -124,7 +134,7 @@ header h1 {
    height: auto; /* Fit the height to the content */
    width: 80%;
 }
-.petName h2 {
+.petName label {
    margin: 2%;
    font-size: 1.5em;
    color: #f8fae5;
@@ -156,7 +166,7 @@ header h1 {
    height: auto; /* Fit the height to the content */
    width: 80%;
 }
-.yNickName h2 {
+.yNickName label {
    margin: 2%;
    font-size: 1.5em;
    color: #f8fae5;
@@ -208,13 +218,14 @@ header h1 {
    text-align: center;
 }
 .species .selectionHeader {
-   font-size: 1em;
+   font-size: 1.5em;
    color: #f8fae5;
    font-family: 'Press Start 2P';
    background-color: #b1d690;
    border-radius: 20px;
-   height: 75%; /* Adjust height to cover half of the grid area */
+   height: 50%; /* Adjust height to cover half of the grid area */
    width: 80%;
+   padding: 10px;
 }
 .species .selectionOptions {
    position: relative;
@@ -232,14 +243,8 @@ header h1 {
    cursor: pointer;
    font-size: 16px;
 }
-.option img {
-   width: 20px;
-   height: 20px;
-   margin-right: 10px;
-}
-.option.selected {
-   background-color: #e5f5d3;
-   border-color: #6c7b59;
+.option input[type="radio"] {
+   margin-right: 10px; /* Add space to the right of the radio buttons */
 }
 
 .pronoun {
@@ -254,7 +259,7 @@ header h1 {
    height: auto;
    width: 80%;
 }
-.pronoun h2 {
+.pronoun .question {
    margin: 2%;
    font-size: 1.5em;
    color: #f8fae5;
@@ -410,5 +415,7 @@ footer {
    grid-area: footer;
    background-color: #ffa24c;
    color: white;
-   text-align: center;
+   display: flex;
+   justify-content: center;
+   align-items: center;
 }
