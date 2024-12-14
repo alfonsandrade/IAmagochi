@@ -16,11 +16,50 @@ const defaultAttributes = {
 
 function updatePersonality(species) {
    if (species && speciesPersonalities[species]) {
-      const { rage, happiness, sadness } = speciesPersonalities[species];
-      document.getElementById("rage").innerText = `${rage}/10`;
-      document.getElementById("happiness").innerText = `${happiness}/10`;
-      document.getElementById("sadness").innerText = `${sadness}/10`;
+      const { anger, happiness, sadness } = speciesPersonalities[species];
+      document.getElementById("anger").value = anger;
+      document.getElementById("happiness").value = happiness;
+      document.getElementById("sadness").value = sadness;
    }
+
+   descriptionText.textContent = description;
+}
+
+function updatePetImg(species) {
+   const img = document.getElementById("pet");
+   if ("cat" === species) {
+      img.src = "../images/Gato.png";
+   }
+   else if ("unicorn" === species) {
+      img.src = "../images/gifs/Unicornio.gif";
+   }
+   else if ("dragon" === species) {
+      img.src = "../images/gifs/Dragao.gif";
+   }
+   else {
+      img.src = "";
+   }
+}
+
+function updatePetDescription(species) {
+   const descriptionText = document.getElementById("descriptionText");
+   let description = "";
+
+   switch (species) {
+      case "cat":
+         description = "Hi! I'm a cat. I'm independent and curious. I love to explore and can be very affectionate.";
+         break;
+      case "unicorn":
+         description = "Hello! I'm a unicorn. I'm magical and rare. I'm a symbol of purity and grace, bringing joy to everyone around me.";
+         break;
+      case "dragon":
+         description = "Greetings! I'm a dragon. I'm powerful and majestic. I'm known for my strength and wisdom, often guarding treasures. Quite angry though.";
+         break;
+      default:
+         description = "Please select a species to hear me talk about myself.";
+   }
+
+   descriptionText.textContent = description;
 }
 
 function createPet() {
@@ -50,8 +89,12 @@ function createPet() {
    alert(`Pet "${petName}" created successfully!`);
 }
 
-document.getElementById("species").addEventListener("change", (event) => {
-   updatePersonality(event.target.value);
+document.querySelectorAll("input[name='species']").forEach(radio => {
+   radio.addEventListener("change", (event) => {
+      updatePersonality(event.target.value);
+      updatePetImg(event.target.value);
+      updatePetDescription(event.target.value);
+   });
 });
 
 document.getElementById("petForm").addEventListener("submit", function(event) {
