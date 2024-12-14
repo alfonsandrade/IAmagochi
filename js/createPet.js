@@ -23,6 +23,43 @@ function updatePersonality(species) {
    }
 }
 
+function updatePetImg(species) {
+   const img = document.getElementById("pet");
+   if ("cat" === species) {
+      img.src = "../images/Gato.png";
+   }
+   else if ("unicorn" === species) {
+      img.src = "../images/gifs/Unicornio.gif";
+   }
+   else if ("dragon" === species) {
+      img.src = "../images/gifs/Dragao.gif";
+   }
+   else {
+      img.src = "";
+   }
+}
+
+function updatePetDescription(species) {
+   const descriptionText = document.getElementById("descriptionText");
+   let description = "";
+
+   switch (species) {
+      case "cat":
+         description = "Hi! I'm a cat. I'm independent and curious. I love to explore and can be very affectionate.";
+         break;
+      case "unicorn":
+         description = "Hello! I'm a unicorn. I'm magical and rare. I'm a symbol of purity and grace, bringing joy to everyone around me.";
+         break;
+      case "dragon":
+         description = "Greetings! I'm a dragon. I'm powerful and majestic. I'm known for my strength and wisdom, often guarding treasures. Quite angry though.";
+         break;
+      default:
+         description = "Please select a species to hear me talk about myself.";
+   }
+
+   descriptionText.textContent = description;
+}
+
 function createPet() {
    const petName = document.getElementById("petName").value;
    const nickname = document.getElementById("nickname").value;
@@ -55,6 +92,8 @@ function createPet() {
 document.querySelectorAll("input[name='species']").forEach(radio => {
    radio.addEventListener("change", (event) => {
       updatePersonality(event.target.value);
+      updatePetImg(event.target.value);
+      updatePetDescription(event.target.value);
    });
 });
 
