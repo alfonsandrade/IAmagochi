@@ -25,10 +25,139 @@ header h1 {
    font-size: 1.5em;
 }
 
-/* Main Content */
-main {
-   flex: 1;
-   padding: 20px;
+.title {
+   grid-area: title;
+   background-color: #ffa24c;
+   border-radius: 15px;
+   width: 100%;
+   height: auto;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   color: white;
+   font-size: 2em;
+   font-family: 'Press Start 2P';
+}
+
+.cfgBtn {
+   grid-area: cfgBtn;
+   justify-self: end;
+   align-self: start;
+   background-color: #ffa24c;
+   border: none;
+   border-radius: 50%;
+   width: 50px;
+   height: 50px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   cursor: pointer;
+}
+.cfgBtn::before {
+   content: "\2699";
+   font-size: 35px;
+   color: white;
+   position: relative;
+}
+.cfgBtn:hover {
+   background-color: #e69143;
+}
+
+.petName {
+   grid-area: petName;
+   background-color: #b1d690;
+   border-radius: 30px;
+   padding: 10px;
+   display: flex;
+   flex-direction: column;
+   align-self: start; /* Align the grid item to the start */
+   justify-self: center; /* Align the grid item to the center */
+   justify-content: flex-start; /* Align content to the bottom */
+   align-items: center; /* Center content horizontally */
+   height: auto; /* Fit the height to the content */
+   width: 80%;
+}
+.petName label {
+   margin: 2%;
+   font-size: 1.5em;
+   color: #f8fae5;
+   font-family: 'Press Start 2P';
+}
+.petName input {
+   align-self: center; /* Align the input element to the bottom */
+   background-color: #f8fae5;
+   height: 20%;
+   width: 70%;
+   padding: 5px;
+   border: none;
+   border-radius: 50px;
+   font-size: 1em;
+   font-family: 'Press Start 2P';
+}
+
+.yNickName {
+   grid-area: yNickName;
+   background-color: #b1d690;
+   border-radius: 30px;
+   padding: 10px;
+   display: flex;
+   flex-direction: column;
+   align-self: start; /* Align the grid item to the start */
+   justify-self: center; /* Align the grid item to the center */
+   justify-content: flex-start; /* Align content to the bottom */
+   align-items: center; /* Center content horizontally */
+   height: auto; /* Fit the height to the content */
+   width: 80%;
+}
+.yNickName label {
+   margin: 2%;
+   font-size: 1.5em;
+   color: #f8fae5;
+   font-family: 'Press Start 2P';
+}
+.yNickName input {
+   align-self: center; /* Align the input element to the bottom */
+   background-color: #f8fae5;
+   height: 20%;
+   width: 70%;
+   padding: 5px;
+   border: none;
+   border-radius: 50px;
+   font-size: 1em;
+   font-family: 'Press Start 2P';
+}
+
+.petImg {
+   grid-area: petImg;
+   position: relative; /* Create a stacking context */
+   max-width: 100%;
+   height: 45vh;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+.petImg img {
+   position: absolute; /* Position images absolutely within the container */
+   max-width: 100%;
+   height: auto;
+}
+#tree {
+   z-index: 1;
+   height: 100%;
+}
+#pet {
+   z-index: 2;
+   height: 30%;
+   left: 43%;
+   bottom: -5%;
+}
+
+.species {
+   grid-area: species;
+   display: flex;
+   flex-direction: column;
+   justify-content: center; /* Center content vertically */
+   align-items: center; /* Center content horizontally */
    text-align: center;
 }
 

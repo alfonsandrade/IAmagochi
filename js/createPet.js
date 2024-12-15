@@ -28,7 +28,7 @@ function updatePersonality(species) {
 function updatePetImg(species) {
    const img = document.getElementById("pet");
    if ("cat" === species) {
-      img.src = "../images/Gato.png";
+      img.src = "../images/gifs/Gato.gif";
    }
    else if ("unicorn" === species) {
       img.src = "../images/gifs/Unicornio.gif";
