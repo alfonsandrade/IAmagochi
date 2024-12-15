@@ -4,59 +4,85 @@
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Create pet Page</title>
-   <link rel="stylesheet" href="css/createPet.css">
    <link rel="stylesheet" href="css/global.css">
+   <link rel="stylesheet" href="css/createPet.css">
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 </head>
 <body>
-   <header>
-      <h1>Welcome to IAmagochi</h1>
-   </header>
-
    <main>
-      <section>
-         <h2>Create Your Pet</h2>
+      <script type="module" src="js/createPet.js"></script>
+      <header>
+         <h1>Welcome to IAmagochi</h1>
+      </header>
+      
+      <form id="petForm">
+         <h2 class="title">Character<br>Creation</h2>
+   
+         <button type="button" class="cfgBtn"></button>
 
-         <form id="petForm">
+         <div class="petName">
             <label for="petName">Pet Name:</label>
             <input id="petName" type="text" required />
+         </div>
 
+         <div class="yNickName">
             <label for="nickname">Your Nickname:</label>
             <input id="nickname" type="text" required />
+         </div>
 
-            <label>Pronouns:</label>
+         <div class="petImg">
+            <img id="tree" src="images/arvorePixelada.png" alt="Tree background">
+            <img id="pet">
+         </div>
+         
+         <div class="species">
+            <label class="selectionHeader">Species:</label>
+            <div class="selectionOptions" id="species" name="species" required>
+               <label class="option"><input type="radio" name="species" value="cat" required>🐈 Cat</label>
+               <label class="option"><input type="radio" name="species" value="unicorn">🦄 Unicorn</label>
+               <label class="option"><input type="radio" name="species" value="dragon">🐉 Dragon</label>
+            </div>
+         </div>
+
+         <div class="pronoun">
+            <label class="question">What are your pronouns?</label>
             <div class="radio-group">
                <label><input type="radio" name="pronouns" value="he/him" required> He/Him</label>
                <label><input type="radio" name="pronouns" value="she/her"> She/Her</label>
                <label><input type="radio" name="pronouns" value="they/them"> They/Them</label>
             </div>
+         </div>
 
-            <label>Species:</label>
-            <select id="species" name="species" required>
-               <option value="" disabled selected>Select a species</option>
-               <option value="cat">Cat</option>
-               <option value="unicorn">Unicorn</option>
-               <option value="dragon">Dragon</option>
-            </select>
+         <section class="personality">
+            <h2>Personality</h2>
+            <div class="meter-container">
+               <label for="anger">Anger:</label>
+               <meter id="anger" min="0" max="10" value="0" high="0"></meter>
+            </div>
+            <div class="meter-container">
+               <label for="happiness">Happiness:</label>
+               <meter id="happiness" min="0" max="10" value="0" high="0"></meter>
+            </div>
+            <div class="meter-container">
+               <label for="sadness">Sadness:</label>
+               <meter id="sadness" min="0" max="10" value="0" high="0"></meter>
+            </div>
+         </section>
 
-            <h3>Personality</h3>
-            <label>Rage:</label>
-            <p id="rage">/10</p>
+         <div class="description">
+            <h2>Pet Description</h2>
+            <p id="descriptionText"></p>
+         </div>
 
-            <label>Happiness:</label>
-            <p id="happiness">/10</p>
+         <button type="submit" class="createBtn">Create</button>
+      </form>
 
-            <label>Sadness:</label>
-            <p id="sadness">/10</p>
-
-            <button type="submit">Create</button>
-         </form>
-
-      </section>
+      <footer>
+         <p>&copy; 2024 IAmagochi. All Rights Reserved.</p>
+      </footer>
    </main>
-   <script type="module" src="js/createPet.js"></script>
 
-   <footer>
-      <p>&copy; 2024 IAmagochi. All Rights Reserved.</p>
-   </footer>
 </body>
 </html>
