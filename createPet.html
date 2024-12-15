@@ -8,15 +8,18 @@
    <link rel="stylesheet" href="css/global.css">
 </head>
 <body>
-   <header>
-      <h1>Welcome to IAmagochi</h1>
-   </header>
-
    <main>
-      <section>
-         <h2>Create Your Pet</h2>
+      <script type="module" src="js/createPet.js"></script>
+      <header>
+         <h1>Welcome to IAmagochi</h1>
+      </header>
+      
+      <form id="petForm">
+         <h2 class="title">Character<br>Creation</h2>
+   
+         <button type="button" class="cfgBtn"></button>
 
-         <form id="petForm">
+         <div class="petName">
             <label for="petName">Pet Name:</label>
             <input id="petName" type="text" required />
 
