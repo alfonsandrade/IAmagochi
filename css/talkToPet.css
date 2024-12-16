@@ -1,5 +1,4 @@
 
-
 * {
     margin: 0;
     padding: 0;
@@ -24,22 +23,6 @@ header {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
-    background-color: #F8FAE5;  /* Light cream background */
-    min-height: 100vh;
-}
-
-/* Add these new styles at the beginning of your CSS file */
-header {
-    background-color: #ffffff;
-    border-bottom: 2px solid #43766C;
-    padding: 15px 0;
-    box-shadow: 0 2px 5px rgba(177, 148, 112, 0.1);
-}
-
-.header-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -48,6 +31,7 @@ header {
 .logo {
     font-size: 24px;
     font-weight: 600;
+    transition: all 0.3s ease;
 }
 
 .logo-ia {
@@ -56,6 +40,10 @@ header {
 
 .logo-magochi {
     color: #B19470;
+}
+
+.logo:hover {
+    transform: scale(1.1)
 }
 
 .add-pet-btn {
@@ -91,46 +79,7 @@ footer {
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    transition: all 0.3s ease;
-}
-
-.add-pet-btn:hover {
-    background-color: #76453B;
-    transform: scale(1.05);
-}
-
-footer {
-    background-color: #ffffff;
-    border-top: 2px solid #43766C;
-    padding: 15px 0;
-    text-align: center;
-    color: #76453B;
-    font-size: 14px;
-}
-
-/* Modify your existing container style */
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
     padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: left;
-    min-height: calc(100vh - 140px); /* Subtract header and footer height */
-}
-
-/* Add to your existing media queries */
-@media (max-width: 768px) {
-    .header-content {
-        padding: 0 15px;
-    }
-    
-    .logo {
-        font-size: 20px;
-    }
-}
-
-.pet-section {
     display: flex;
     flex-direction: column;
     align-items: left;
@@ -154,22 +103,7 @@ footer {
     align-items: center;
 }
 
-.pet-container {
-    position: relative;
-    display: flex;
-    align-items: center;
-    margin-left: 100px;
-    gap: 70px;
-}
-
-.pet-image {
-    width: 200px;
-    height: auto;
-    z-index: 1;
-    filter: drop-shadow(0 4px 6px rgba(118, 69, 59, 0.1));
-}
-
-.speech-bubble {
+#speech-bubble {
     position: relative;
     background: #ffffff;
     border-radius: 15px;
@@ -181,9 +115,10 @@ footer {
     max-height: 400px;
     min-height: 300px;
     border: 2px solid #43766C;  /* Main green color for border */
+    overflow-y: auto;
 }
 
-.speech-bubble::before {
+#speech-bubble::before {
     content: '';
     position: absolute;
     left: -20px;
@@ -194,10 +129,10 @@ footer {
     border-color: transparent #43766C transparent transparent;  /* Match border color */
 }
 
-.speech-bubble::after {
+#speech-bubble::after {
     content: '';
     position: absolute;
-    left: -16px;
+    left: -15px;
     top: 50%;
     transform: translateY(-50%);
     border-width: 8px;
@@ -205,7 +140,7 @@ footer {
     border-color: transparent #ffffff transparent transparent;  /* White interior */
 }
 
-.speech-bubble p {
+#speech-bubble p {
     margin: 0;
     font-size: 16px;
     line-height: 1.5;
@@ -273,11 +208,7 @@ footer {
         margin-left: 20px;
     }
 
-    .pet-image {
-        width: 150px;
-    }
-
-    .speech-bubble {
+    #speech-bubble {
         min-width: 200px;
         padding: 15px;
     }
@@ -296,17 +227,23 @@ footer {
 .cat-sprite {
     width: 32px;
     height: 32px;
-    background-image: url('../images/CatCharacterAnimations/SpriteSheets/1_Cat_Idle-Sheet.png');  /* Check if this path is correct */
+    background-image: url('../images/CatCharacterAnimations/SpriteSheets/1_Cat_Idle-Sheet.png');
     background-repeat: no-repeat;
     background-position: 0 0;
-    animation: catSprite 1s steps(8) infinite;
+    animation: catSprite 0.7s steps(8) infinite;
     transform: scale(8);
     gap: 70px;
     image-rendering: pixelated;
     background-color: #43766C;
-    border-radius: 100px
-
+    border-radius: 100px;
+    transition: transform 0.3s ease; /* Add smooth transition */
 }
+
+.cat-sprite:hover {
+    transform: scale(9); 
+    cursor: pointer; 
+}
+
 
 @keyframes catSprite {
     from {
@@ -317,4 +254,62 @@ footer {
     }
 }
 
-/* You can remove the previous .pet-image styles */
+/* Add these new styles */
+.typing-text {
+    overflow: hidden;
+    border-right: 2px solid #43766C;
+    white-space: pre-wrap;
+    margin: 0 auto;
+}
+
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+
+/* Update the speech bubble p style */
+#speech-bubble p {
+    margin: 0 0 10px 0;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #76453B;
+    min-height: 24px; /* Add this to prevent bubble from collapsing */
+}
+
+.dot {
+    display: inline-block;
+    animation: wave 1s ease-in-out infinite;
+    color: #a1a1a1;
+}
+
+@keyframes wave {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-2px); }
+}
+
+.attributes {
+    transform: scale(0.5);
+}
+
+.pet-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-top: 100px;
+}
+
+.status-button {
+    width: 50%;
+    transform: scale(2.4);
+    margin-top: 150px; 
+}
+
+.pet-container {
+    position: relative;
+    display: flex;
+    align-items: flex-start; 
+    margin-left: 100px;
+    gap: 20px;
+    padding-top: 100px;
+}
