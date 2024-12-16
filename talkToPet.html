@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Pet</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/talkToPet.css">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <span class="logo-ia">IA</span><span class="logo-magochi">MAGOCHI</span>
+            </div>
+            <button class="add-pet-btn">+</button>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="pet-section">
+            <div class="pet-container">
+                <div class="pet-wrapper">
+                    <div class="cat-sprite"></div>
+                    <img src="images/statusButton.png" class="status-button">
+                </div>
+                <div id="speech-bubble">
+                    <p style="color: #43766C;">Buddy: Olá, vamos conversar?</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="interaction-section">
+            <div class="input-container">
+                <input type="text" id="userInput" placeholder="Digite sua mensagem...">
+                <button id="sendButton">Enviar mensagem</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 IAMagochi. All rights reserved.</p>
+    </footer>
+
+    <script src="js/talkToPet.js"></script>
+</body>
+</html>

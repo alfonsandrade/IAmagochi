@@ -1,14 +1,7 @@
-.press-start-2p-regular {
-   font-family: "Press Start 2P", system-ui;
-   font-weight: 400;
-   font-style: normal;
-}
-
 /* General Styles */
 body {
    margin: 0;
    padding: 0;
-   border-width: 0;
    background-color: #f7f7f7;
    color: #333;
    display: flex;
@@ -16,67 +9,17 @@ body {
    min-height: 100vh;
 }
 
-nav ul {
-   list-style: none;
-   margin: 0;
-   padding: 0;
-   display: flex;
-   gap: 15px;
-}
-
-nav ul li {
-   display: inline;
-}
-
-nav ul li a {
-   text-decoration: none;
-   color: white;
-   font-weight: bold;
-}
-
-nav ul li a:hover {
-   text-decoration: underline;
-}
-
-/* Main Content */
-main {
-   flex: 1;
-   display: grid;
-   grid-template-columns: 1fr;
-   grid-template-rows: 1fr 18fr 1fr;
-   grid-template-areas:
-      "header"
-      "form"
-      "footer";
-   gap: 5px;
-   text-align: center;
-   max-height: 100vh;
-}
-
-form {
-   grid-area: form;
-   display: grid;
-   grid-template-columns: 1fr 1fr 1fr;
-   grid-template-rows: auto;
-   grid-template-areas:
-      ".           title       cfgBtn"
-      "petName     yNickName   petImg"
-      "species     pronoun     petImg"
-      "personality description createBtn";
-   gap: 10px;
-   padding: 10px;
-}
-
 /* Header */
 header {
-   grid-area: header;
-   background-color: #ffa24c;
+   width: 100%;
+   background-color: #4caf50;
    color: white;
    padding: 10px 20px;
    display: flex;
    justify-content: space-between;
    align-items: center;
 }
+
 header h1 {
    margin: 0;
    font-size: 1.5em;
@@ -217,205 +160,40 @@ header h1 {
    align-items: center; /* Center content horizontally */
    text-align: center;
 }
-.species .selectionHeader {
-   font-size: 1.5em;
-   color: #f8fae5;
-   font-family: 'Press Start 2P';
-   background-color: #b1d690;
-   border-radius: 20px;
-   height: 50%; /* Adjust height to cover half of the grid area */
-   width: 80%;
-   padding: 10px;
-}
-.species .selectionOptions {
-   position: relative;
-   top: -15%; /* Adjust this value as needed to position the options correctly */
-   width: 60%;
-   height: 100%; /* Extend to the end of the grid area */
-}
-.option {
-   display: flex;
-   align-items: center;
-   background-color: #f7f8dc;
-   border: 2px solid #b2c89b;
-   border-radius: 5px;
-   padding: 8px 10px;
-   cursor: pointer;
-   font-size: 16px;
-}
-.option input[type="radio"] {
-   margin-right: 10px; /* Add space to the right of the radio buttons */
+
+main section h2 {
+   font-size: 1.8em;
+   margin-bottom: 10px;
 }
 
-.pronoun {
-   grid-area: pronoun;
-   background-color: #b1d690;
-   border-radius: 30px;
-   padding: 10px;
-   display: flex;
-   flex-direction: column;
-   align-self: start; /* Align the grid item to the start */
-   justify-self: center; /* Align the grid item to the center */
-   height: auto;
-   width: 80%;
-}
-.pronoun .question {
-   margin: 2%;
-   font-size: 1.5em;
-   color: #f8fae5;
-   font-family: 'Press Start 2P';
-}
-.pronoun .radio-group {
-   display: flex;
-   flex-direction: column;
-   align-items: flex-start; /* Align radio buttons to the left */
-   width: 100%;
-   position: relative;
-   left: 8%;
-   font-family: 'Press Start 2P';
-}
-.pronoun .radio-group label {
-   display: flex;
-   align-items: center;
-   margin-bottom: 5px;
-}
-.pronoun .radio-group input[type="radio"] {
-   margin-right: 10px;
+main section p {
+   font-size: 1.2em;
+   color: #555;
 }
 
-.personality {
-   grid-area: personality;
-   background-color: #b1d690;
-   border-radius: 30px;
-   padding: 10px;
-   display: flex;
-   flex-direction: column;
-   align-self: start;
-   justify-self: center;
-   justify-content: flex-start;
-   align-items: center;
-   height: auto;
-   width: 80%;
-}
-.personality h2 {
-   margin: 2%;
-   font-size: 1.5em;
-   color: #f8fae5;
-   font-family: 'Press Start 2P';
-}
-.meter-container {
-   display: flex;
-   align-items: center;
-   width: 100%;
-   margin: 10px 0;
-}
-.meter-container label {
-   width: 20%; /* Adjust width as needed */
-   text-align: right;
-   margin-right: 10px;
-   font-size: 0.8em;
-   color: #333;
-}
-.personality meter {
-   width: 70%; /* Adjust width as needed */
-   height: 20px;
-   margin: 1px;
-}
-#anger::-webkit-meter-optimum-value {
-   background: #da2f47;
-}
-#anger::-moz-meter-bar {
-   background: #da2f47;
-}
-#anger::-ms-fill {
-   background: #da2f47;
-}
-#happiness::-webkit-meter-optimum-value {
-   background: #00bf63;
-}
-#happiness::-moz-meter-bar {
-   background: #00bf63;
-}
-#happiness::-ms-fill {
-   background: #00bf63;
-}
-#sadness::-webkit-meter-optimum-value {
-   background: rgb(2, 2, 146);
-}
-#sadness::-moz-meter-bar {
-   background: rgb(2, 2, 146);
-}
-#sadness::-ms-fill {
-   background: rgb(2, 2, 146);
+form {
+   width: 300px;
+   margin: 0 auto;
 }
 
-.description {
-   grid-area: description;
-   background-color: #b1d690;
-   border-radius: 30px;
-   padding: 10px;
-   display: flex;
-   flex-direction: column;
-   align-self: start; /* Align the grid item to the start */
-   justify-self: center; /* Align the grid item to the center */
-   justify-content: flex-start; /* Align content to the bottom */
-   align-items: center; /* Center content horizontally */
-   height: auto; /* Fit the height to the content */
-   width: 80%;
-}
-.description h2 {
-   margin: 2%;
-   font-size: 1.5em;
-   color: #f8fae5;
-   font-family: 'Press Start 2P';
-}
-.description p {
-   align-self: center; /* Align the input element to the bottom */
-   background-color: #f8fae5;
-   height: auto;
-   max-width: 100%;
-   padding: 5px;
-   border-radius: 15px;
-   border: none;
-   font-size: 1em;
-   font-family: 'Press Start 2P';
-   word-wrap: break-word;
-   overflow-wrap: break-word;
-   text-align: left;
+h3 {
+   margin-top: 16px;
 }
 
-
-.createBtn {
-   grid-area: createBtn;
-   background-color: #ffa24c;
-   border-radius: 30px;
-   width:  50%;
-   height: 50%;
-   display: flex;
-   align-self: flex-end;
-   justify-self: center;
-   justify-content: center;
-   align-items: center;
-   color: white;
-   font-size: 2em;
-   font-family: 'Press Start 2P';
+label {
    font-weight: bold;
-   cursor: pointer;
-}
-.createBtn:hover {
-   background-color: #e69143;
-}
-.createBtn a {
-   text-decoration: none;
-   color: white;
+   margin-top: 12px;
+   display: block;
 }
 
-/* Footer */
-footer {
-   grid-area: footer;
-   background-color: #ffa24c;
-   color: white;
-   display: flex;
-   justify-content: center;
-   align-items: center;
+input[type="text"] {
+   width: 100%;
+   padding: 8px;
+   margin-top: 4px;
+   margin-bottom: 16px;
+}
+
+.radio-group {
+   margin-top: 8px;
+   margin-bottom: 16px;
 }

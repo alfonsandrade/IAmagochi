@@ -1,0 +1,315 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #F8FAE5;  /* Light cream background */
+    min-height: 100vh;
+}
+
+/* Add these new styles at the beginning of your CSS file */
+header {
+    background-color: #ffffff;
+    border-bottom: 2px solid #43766C;
+    padding: 15px 0;
+    box-shadow: 0 2px 5px rgba(177, 148, 112, 0.1);
+}
+
+.header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.logo-ia {
+    color: #43766C;
+}
+
+.logo-magochi {
+    color: #B19470;
+}
+
+.logo:hover {
+    transform: scale(1.1)
+}
+
+.add-pet-btn {
+    background-color: #43766C;
+    color: #F8FAE5;
+    width: 35px;
+    height: 35px;
+    border: none;
+    border-radius: 50%;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.add-pet-btn:hover {
+    background-color: #76453B;
+    transform: scale(1.05);
+}
+
+footer {
+    background-color: #ffffff;
+    border-top: 2px solid #43766C;
+    padding: 15px 0;
+    text-align: center;
+    color: #76453B;
+    font-size: 14px;
+}
+
+/* Modify your existing container style */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    min-height: calc(100vh - 140px); /* Subtract header and footer height */
+}
+
+/* Add to your existing media queries */
+@media (max-width: 768px) {
+    .header-content {
+        padding: 0 15px;
+    }
+    
+    .logo {
+        font-size: 20px;
+    }
+}
+
+.pet-section {
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+#speech-bubble {
+    position: relative;
+    background: #ffffff;
+    border-radius: 15px;
+    padding: 20px;
+    margin-left: 30px;
+    box-shadow: 0 2px 10px rgba(177, 148, 112, 0.2);  /* Subtle shadow using B19470 */
+    max-width: 900px;
+    min-width: 900px;
+    max-height: 400px;
+    min-height: 300px;
+    border: 2px solid #43766C;  /* Main green color for border */
+    overflow-y: auto;
+}
+
+#speech-bubble::before {
+    content: '';
+    position: absolute;
+    left: -20px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent #43766C transparent transparent;  /* Match border color */
+}
+
+#speech-bubble::after {
+    content: '';
+    position: absolute;
+    left: -15px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-width: 8px;
+    border-style: solid;
+    border-color: transparent #ffffff transparent transparent;  /* White interior */
+}
+
+#speech-bubble p {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #76453B;  /* Dark brown for text */
+}
+
+.interaction-section {
+    padding: 20px 0;
+}
+
+.input-container {
+    display: flex;
+    gap: 10px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+#userInput {
+    flex: 1;
+    padding: 12px 15px;
+    border: 2px solid #B19470;  /* Warm brown for input border */
+    border-radius: 8px;
+    font-size: 16px;
+    font-family: inherit;
+    transition: border-color 0.3s ease;
+    background-color: #ffffff;
+    color: #76453B;  /* Dark brown for text */
+}
+
+#userInput::placeholder {
+    color: #B19470;  /* Warm brown for placeholder */
+    opacity: 0.7;
+}
+
+#userInput:focus {
+    outline: none;
+    border-color: #43766C;  /* Main green color for focus state */
+    box-shadow: 0 0 0 3px rgba(67, 118, 108, 0.1);  /* Subtle focus ring */
+}
+
+#sendButton {
+    padding: 12px 25px;
+    background-color: #43766C;  /* Main green color for button */
+    color: #F8FAE5;  /* Light cream for button text */
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#sendButton:hover {
+    background-color: #76453B;  /* Dark brown on hover */
+    transform: translateY(-1px);
+}
+
+#sendButton:active {
+    transform: translateY(0);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .pet-container {
+        margin-left: 20px;
+    }
+
+    #speech-bubble {
+        min-width: 200px;
+        padding: 15px;
+    }
+
+    .input-container {
+        flex-direction: column;
+        padding: 0 20px;
+    }
+
+    #sendButton {
+        width: 100%;
+    }
+}
+
+/* cat animation */
+.cat-sprite {
+    width: 32px;
+    height: 32px;
+    background-image: url('../images/CatCharacterAnimations/SpriteSheets/1_Cat_Idle-Sheet.png');
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    animation: catSprite 0.7s steps(8) infinite;
+    transform: scale(8);
+    gap: 70px;
+    image-rendering: pixelated;
+    background-color: #43766C;
+    border-radius: 100px;
+    transition: transform 0.3s ease; /* Add smooth transition */
+}
+
+.cat-sprite:hover {
+    transform: scale(9); 
+    cursor: pointer; 
+}
+
+
+@keyframes catSprite {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: -256px 0;  /* Adjust based on total width of sprite sheet */
+    }
+}
+
+/* Add these new styles */
+.typing-text {
+    overflow: hidden;
+    border-right: 2px solid #43766C;
+    white-space: pre-wrap;
+    margin: 0 auto;
+}
+
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+
+/* Update the speech bubble p style */
+#speech-bubble p {
+    margin: 0 0 10px 0;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #76453B;
+    min-height: 24px; /* Add this to prevent bubble from collapsing */
+}
+
+.dot {
+    display: inline-block;
+    animation: wave 1s ease-in-out infinite;
+    color: #a1a1a1;
+}
+
+@keyframes wave {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-2px); }
+}
+
+.attributes {
+    transform: scale(0.5);
+}
+
+.pet-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-top: 100px;
+}
+
+.status-button {
+    width: 50%;
+    transform: scale(2.4);
+    margin-top: 150px; 
+}
+
+.pet-container {
+    position: relative;
+    display: flex;
+    align-items: flex-start; 
+    margin-left: 100px;
+    gap: 20px;
+    padding-top: 100px;
+}
