@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
        chatDisplay.scrollTop = chatDisplay.scrollHeight; // Scroll to the latest message
     }
  
-    chatSendButton.addEventListener("click", async () => {
+    chatSendButton.addEventListener("click", () => {
        const userMessage = chatInput.value.trim();
        if (!userMessage) return;
  
@@ -49,24 +49,17 @@ document.addEventListener("DOMContentLoaded", () => {
  
        const prompt = constructPrompt(userMessage);
  
-       try {
-          const response = await fetch("http://10.147.17.216:5005/ask", {
-             method: "POST",
-             headers: {
-                "Content-Type": "application/json",
-             },
-             body: JSON.stringify({ prompt }),
-          });
-          const data = await response.json();
+       // Simulate response for now
+       const simulatedResponse = {
+          response: "I'm here for you, Alfons! Let's have some fun together! 🐉",
+          tone: "happy"
+       };
  
-          appendMessage("Buddy", data.response || "Sorry, I didn't understand that.");
+       appendMessage("Buddy", simulatedResponse.response || "Sorry, I didn't understand that.");
  
-          // Update pet status based on the tone in the response
-          if (data.tone === "sad") petStatus.petPersonality.sadness += 1;
-          else if (data.tone === "happy") petStatus.petPersonality.happiness += 1;
-       } catch (error) {
-          appendMessage("Buddy", `Error: ${error.message}`);
-       }
+       // Update pet status based on the tone in the response
+       if (simulatedResponse.tone === "sad") petStatus.petPersonality.sadness += 1;
+       else if (simulatedResponse.tone === "happy") petStatus.petPersonality.happiness += 1;
     });
  
     // CALENDAR PART
