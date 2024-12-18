@@ -27,6 +27,13 @@ document.addEventListener("DOMContentLoaded", () => {
       }
    });
 
+   document.getElementById('chat-input').addEventListener('keypress', function(event) {
+      if (event.key === 'Enter') {
+         event.preventDefault();
+         document.getElementById('chat-send-button').click();
+      }
+   });
+
 
    // CALENDAR PART
 

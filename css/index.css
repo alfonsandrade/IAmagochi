@@ -225,32 +225,32 @@ body {
 
 /* cat animation */
 .cat-sprite {
-    width: 32px;
-    height: 32px;
-    position: absolute; left:400px;
-    background-image: url('../images/CatCharacterAnimations/SpriteSheets/1_Cat_Idle-Sheet.png');
-    background-repeat: no-repeat;
-    background-position: 0 0;
-    animation: catSprite 0.7s steps(8) infinite;
-    transform: scale(8);
-    gap: 70px;
-    image-rendering: pixelated;
-    background-color: #b1d690;
-    border-radius: 100px;
-    transition: transform 0.3s ease; /* Add smooth transition */
+   width: 32px;
+   height: 32px;
+   position: relative; left:22vw;
+   background-image: url('../images/CatCharacterAnimations/SpriteSheets/1_Cat_Idle-Sheet.png');
+   background-repeat: no-repeat;
+   background-position: 0 0;
+   animation: catSprite 0.7s steps(8) infinite;
+   transform: scale(8);
+   gap: 70px;
+   image-rendering: pixelated;
+   background-color: #b1d690;
+   border-radius: 100px;
+   transition: transform 0.3s ease; /* Add smooth transition */
 }
 
 .cat-sprite:hover {
-    transform: scale(9); 
-    cursor: pointer; 
+   transform: scale(9); 
+   cursor: pointer; 
 }
 
 
 @keyframes catSprite {
-    from {
-        background-position: 0 0;
-    }
-    to {
-        background-position: -256px 0;  /* Adjust based on total width of sprite sheet */
-    }
+   from {
+      background-position: 0 0;
+   }
+   to {
+      background-position: -256px 0;  /* Adjust based on total width of sprite sheet */
+   }
 }
