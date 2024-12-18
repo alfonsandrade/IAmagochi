@@ -3,36 +3,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const chatInput = document.getElementById("chat-input");
     const chatSendButton = document.getElementById("chat-send-button");
  
-    const petStatus = {
-       petName: "Fluffy",
-       userNickname: "Alfons",
-       petSpecies: "Dragon",
-       petPersonality: {
-          rage: 2, // out of 10
-          happiness: 8, // out of 10
-          sadness: 1, // out of 10
-       },
-       petHunger: 3, // out of 10
-       petTiredness: 4 // out of 10
-    };
- 
-    function constructPrompt(userMessage) {
-       return `
-       Pet Name: ${petStatus.petName}
-       User Nickname: ${petStatus.userNickname}
-       Pet Species: ${petStatus.petSpecies}
-       Pet Personality: Rage (${petStatus.petPersonality.rage}/10), Happiness (${petStatus.petPersonality.happiness}/10), Sadness (${petStatus.petPersonality.sadness}/10)
-       Pet Hunger: ${petStatus.petHunger}/10
-       Pet Tiredness: ${petStatus.petTiredness}/10
- 
-       Prioritize responding based on the pet's personality and current status. Make sure the response reflects the pet's emotional and physical state (e.g., hunger, tiredness, happiness, sadness, or rage).
- 
-       Use a short, friendly, and engaging tone as the pet would. Keep the language simple, suitable for a child aged 6-12, and make the Buddy sound like a curious and playful creature with a simple mind.
- 
-       Include only one of these three tones in the response: "happy," "sad," or "neutral."
-       The user said: "${userMessage}"`;
-    }
- 
     function appendMessage(sender, message) {
        const messageElement = document.createElement("p");
        messageElement.textContent = `${sender}: ${message}`;
@@ -40,27 +10,22 @@ document.addEventListener("DOMContentLoaded", () => {
        chatDisplay.scrollTop = chatDisplay.scrollHeight; // Scroll to the latest message
     }
  
-    chatSendButton.addEventListener("click", () => {
+    chatSendButton.addEventListener("click", async () => {
        const userMessage = chatInput.value.trim();
        if (!userMessage) return;
  
        appendMessage("You", userMessage);
        chatInput.value = "";
  
-       const prompt = constructPrompt(userMessage);
- 
-       // Simulate response for now
-       const simulatedResponse = {
-          response: "I'm here for you, Alfons! Let's have some fun together! 🐉",
-          tone: "happy"
-       };
- 
-       appendMessage("Buddy", simulatedResponse.response || "Sorry, I didn't understand that.");
- 
-       // Update pet status based on the tone in the response
-       if (simulatedResponse.tone === "sad") petStatus.petPersonality.sadness += 1;
-       else if (simulatedResponse.tone === "happy") petStatus.petPersonality.happiness += 1;
+       try {
+          const response = await fetch("http://10.147.17.216:5005/ask?prompt=" + encodeURIComponent(userMessage));
+          const data = await response.json();
+          appendMessage("Buddy", data.response || "Sorry, I didn't understand that.");
+       } catch (error) {
+          appendMessage("Buddy", `Error: ${error.message}`);
+       }
     });
+ 
  
     // CALENDAR PART
  
